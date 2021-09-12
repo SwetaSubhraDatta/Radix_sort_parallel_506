@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(include)
 
 
-if(APPLE)
+if(APPLE) #for Apple Only
     message(STATUS "You are using MACOS X")
     message("its a safe practice to install gcc instead of using default sdk compiler with brew install gcc")
     message("if you dont want to set gcc as your default compiler you can still use AppleClang" " \nJust copy your omp.h  from /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include/omp.h inside your \n/library/Developer/CommandLineTools/SDK/Macos--version/usr/include \n")
@@ -28,7 +28,7 @@ if(APPLE)
     target_link_libraries(ECE_506  OpenMP::OpenMP_CXX MPI::MPI_CXX sortlib)
 
 
-else()
+else()  #for other machines
     find_package(OpenMP REQUIRED)
     if(OpenMP_FOUND)
         message(STATUS "OPENMP FOUND" )
